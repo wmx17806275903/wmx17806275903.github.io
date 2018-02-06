@@ -157,3 +157,5 @@ upImg: function () {
 ```
 在点击相应图片时进行预览，依然是传入e后获取点击点击的第几张图片，然后调用wx.previewImage传入图片url地址即可。
 
+
+
