@@ -4,7 +4,7 @@ title:      如何在Anaconda下使用jupyter notebook
 subtitle:   在jupyter notebook中使用tensorflow
 date:       2018-02-26
 author:     WMX
-header-img: img/post-bg-github-cup.jpg
+header-img: img/tech-eye.jpg
 catalog: true
 tags:
     - Anaconda
