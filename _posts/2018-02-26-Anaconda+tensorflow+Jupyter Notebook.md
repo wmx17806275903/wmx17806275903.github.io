@@ -16,14 +16,14 @@ tags:
 最初接触到这个在线编程web应用程序是毕设学习Python时，视频中那位老师在使用这个工具，因为已经安装了pycharm编辑器，所以当时没有想去了解。
 而今，刚好电脑装了Anaconda，直接在web端编程，避免浏览器，编辑器的切换，就在Anaconda环境下搭建了一下jupyter notebook，方便直接调用。
 
-#什么是jupyter notebook
+# 什么是jupyter notebook
 
 （Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。
 Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。 用途包括：数据清理和转换，数值模拟，统计建模，机器学习等等 ）  -----摘自 百度百科
 
 所以可以看到Jupyter Notebook功能多样，是一款比较强大的应用程序。
 
-#在Anaconda中配置tensorflow
+# 在Anaconda中配置tensorflow
 
 1.打开终端
 
@@ -50,7 +50,7 @@ Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文�
 正确的话，会输出：
 Hello, TensorFlow!  
 
-#在Jupyter中使用TensorFlow
+# 在Jupyter中使用TensorFlow
 
 1.首先，进入tensorFlow环境，安装ipython和jupyter。命令如下：
 
