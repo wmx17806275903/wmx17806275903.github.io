@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      FD-MOBILENET IMPROVED MOBILENET WITH A FAST DOWNSAMPLING STRATEGY
-subtitle:   FD-MOBILENET 使用下采样策略改善MobileNet
+title:      FD-MOBILENET ：IMPROVED MOBILENET WITH A FAST DOWNSAMPLING STRATEGY
+subtitle:   使用下采样策略改善MobileNet
 date:       2018-4-2
 author:     WMX
 header-img: img/tech-eye.jpg
@@ -10,8 +10,8 @@ tags:
     - 计算机视觉
     - 深度学习
     - FD-MobileNet
-    - 下采样策略
-    - 深度可分离卷积---
+    - 深度可分离卷积
+---
 
 # 前言
 GitHub原文 [点这里 ->> ](https://github.com/wmx17806275903/wmx17806275903.github.io/new/master/_posts)
