@@ -11,8 +11,7 @@ tags:
     - 深度学习
     - FD-MobileNet
     - 下采样策略
-    - 深度可分离卷积
----
+    - 深度可分离卷积---
 
 # 前言
 GitHub原文 [点这里 ->> ](https://github.com/wmx17806275903/wmx17806275903.github.io/new/master/_posts)
