@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      FD-MOBILENET ：IMPROVED MOBILENET WITH A FAST DOWNSAMPLING STRATEGY
-subtitle:   使用下采样策略改善MobileNet
+title:      FD-MOBILENET （IMPROVED MOBILENET WITH A FAST DOWNSAMPLING STRATEGY）
+subtitle:   使用快速下采样策略改善MobileNet
 date:       2018-4-2
 author:     WMX
 header-img: img/tech-eye.jpg
