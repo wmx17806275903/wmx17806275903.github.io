@@ -4,7 +4,7 @@ title:      FD-MOBILENET （IMPROVED MOBILENET WITH A FAST DOWNSAMPLING STRATE
 subtitle:   使用快速下采样策略改善MobileNet
 date:       2018-04-02
 author:     WMX
-header-img: img/post-bg-os-metro.jpg
+header-img: img/qiu.jpg
 catalog: true
 tags:
     - 计算机视觉
