@@ -32,10 +32,10 @@ Devices](https://arxiv.org/pdf/1707.01083.pdf)
 （i）显着降低了计算成本。 
 （ii）增加信息容量并实现显着的性能改进;
 （iii）工程友好并提供快速的实际推理速度。在ILSVRC 2012和PASCAL VOC 2007数据集上的实验表明，FD-MobileNet一直超越MobileNet，并在不同的计算预算
-下取得与ShuffleNet相似的结果，例如，在ILSVRC 2012上排名第一的精度上超过MobileNet 5.5％，VOC2007在12个MFLOP的复杂度下超过3.6％ MAP。
-在基于ARM的设备上，FD-MobileNet在相同的复杂度下实现了比MobileNet高1.11倍的推理加速比和比ShuffleNet高1.82倍。
+下取得与ShuffleNet相似的结果，例如，在ILSVRC 2012上top-1的精度上超过MobileNet 5.5％，VOC2007在12个MFLOPs的复杂度下MAP超过3.6％ 。
+在基于ARM的设备上，FD-MobileNet在相同的复杂度下实现了比MobileNet高1.11倍的推理加速比，比ShuffleNet高1.82倍。
 
-原始的MobileNet采用[缓慢的下采样]策略，当计算预算相对较小时，会导致严重的性能下降，例如10-140 MFLOPs。 在这种缓慢的下采样策略中，很多层具有较大的feature map，因此特征表示更加详细。 但是，网络中的信道数量有限，信息容量相对较小。 如果网络的宽度进一步缩小以适应非常有限的复杂性，信息容量将变得太小，网络的性能将崩溃。
+原始的MobileNet采用[ 缓慢的下采样 ]策略，当计算预算相对较小时，会导致严重的性能下降，例如10-140 MFLOPs。 在这种缓慢的下采样策略中，很多层具有较大的feature map，因此特征表示更加详细。 但是，网络中的信道数量有限，信息容量相对较小。 如果网络的宽度进一步缩小以适应非常有限的复杂性，信息容量将变得太小，网络的性能将崩溃。
 在本文中，我们针对非常有限的计算资源（例如10到140个MFLOPs）提出了一种高效、准确的网络，称为快速下采样MobileNet（FD-MobileNet）。并非仅仅缩小网络的宽度以适应小的计算预算，我们通过在MobileNet框架中采用快速下采样策略来构建FD-MobileNet。在所提出的FD MobileNet中，我们在前12层内执行32倍下采样，这只是原始MobileNet中的一半。之后，为了更好的表示能力，采用了一系列深度可分的卷积。通过快速下采样策略，FD-MobileNet具有以下三个优点：（i）FD-MobileNet的计算代价随着feature map的空间维度减小而下降。（ii）在同样的复杂度下，FD-MobileNet比MobileNet有更多的通道。这极大的增加了FD-MobileNet的信息容量，这对于小型网络性能至关重要 （iii）FD-MobileNet继承了MobileNet的简单架构，并在工程实现中提供了快速的推理速度。
 
 ## FD-MobileNet的设计
@@ -50,7 +50,7 @@ FD-MobileNet利用深度可分离的卷积作为building block。 一个k×k的�
 
 当计算预算非常小时，信息容量在网络性能中扮演更重要的角色。 通常，减少信道的数量以使紧凑的网络架构适应一定的复杂度。 在采用缓慢下采样方案的情况下，网络变得太窄而不能编码足够的信息，这导致严重的性能下降。例如，在12个MFLOPs的复杂度下，原始MobileNet架构在全局池之前的最后一层中只有128个通道，因此信息容量非常有限。
 
-基于这种见解，我们建议在FD-MobileNet架构中采用快速下采样策略，并将特征提取过程推迟到最小分辨率。更快的下采样通过在网络开始处连续应用具有大步幅的深度可分离卷积来实现。在这里，我们不使用最大池，因为我们发现它没有获得性能改进，但引入了额外的计算。所提出的FD-MobileNet接受大小为224×224像素的图像，并且在前2个层内执行4x下采样，仅在12层内执行32x下采样，而原始MobileNet中执行相同下采样的层数分别为4和24。更具体地说，12层由1个标准卷积层，5个深度可分离卷积（每个卷积层具有深度卷积层和逐点卷积层）和1个深度卷积层组成。图1说明了FD MobileNet，MobileNet和ShuffleNet的下采样策略在140个MFLOP的计算预算下的比较。从图中可以看出，在feature map缩小到7×7之前，FD-MobileNet比其他架构浅得多。
+基于这种见解，我们建议在FD-MobileNet架构中采用快速下采样策略，并将特征提取过程推迟到最小分辨率。更快的下采样通过在网络开始处连续应用具有大步幅的深度可分离卷积来实现。在这里，我们不使用最大池，因为我们发现它没有获得性能改进，但引入了额外的计算。所提出的FD-MobileNet接受大小为224×224像素的图像，并且在前2个层内执行4x下采样，仅在12层内执行32x下采样，而原始MobileNet中执行相同下采样的层数分别为4和24。更具体地说，12层由1个标准卷积层，5个深度可分离卷积（每个卷积层具有深度卷积层和逐点卷积层）和1个深度卷积层组成。图1说明了FD MobileNet，MobileNet和ShuffleNet的下采样策略在140个MFLOPs的计算预算下的比较。从图中可以看出，在feature map缩小到7×7之前，FD-MobileNet比其他架构浅得多。
 ![图1](https://img-blog.csdn.net/20180221132002687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzE5MTQ2ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ### 剩余图层 
@@ -58,6 +58,7 @@ FD-MobileNet利用深度可分离的卷积作为building block。 一个k×k的�
 ![表1](https://img-blog.csdn.net/20180221132410606?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzE5MTQ2ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 ### 整体架构 
 FD-MobileNet的总体结构如表1所示.FD-MobileNet采用24层的简单堆叠架构，包括1个标准卷积层，11个深度可分离卷积和1个完全连接层。然后，在每个卷积层之后应用批量归一化[23 ]和ReLU激活。 为了将FDMobileNet应用于不同的计算预算，我们引入了一个超参数α，称为宽度乘法器[18]，以统一调整FD-MobileNet的宽度。 我们用一个简单的符号“FDMobileNet α×”表示一个宽度乘数α的网络，表1中的网络表示为“FD-MobileNet 1×”
+
 推断效率 目前的深度学习框架通过构建非循环计算图来完成对神经网络的推断。 对于移动或嵌入式设备，内存和缓存资源是有限的。 因此，复杂的计算图可能会导致频繁的内存/高速缓存切换，从而降低实际的推理速度。 FD-MobileNet继承了原始MobileNet的简单架构，并且计算图中只有一条信息路径。 这使FD-MobileNet对工程实施非常友好，并且在物理设备上非常有效。
 ## 实验
 ### 在ILSVRC 2012数据集上的结果
